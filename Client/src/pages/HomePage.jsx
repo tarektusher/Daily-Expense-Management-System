@@ -1,15 +1,13 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+// import { Outlet, useLocation } from 'react-router-dom';
 import { Box, Typography} from '@mui/material';
 import "../../src/Dash.css";
-import  Navbar  from '../components/Navbar';
-import DashBoard from '../components/DashBoard';
-import authServices from '../services/authServices';
-import LogoutHomepage from '../components/LogoutHomepage';
+// import authServices from '../services/authServices';
 import LeftBar from '../components/LeftBar'
+import { Outlet } from 'react-router-dom';
 export const HomePage = () => {
-  const location = useLocation();
-  const isUserLoggedIn = authServices.isUserLoggedIn();
+  // const location = useLocation();
+  // const isUserLoggedIn = authServices.isUserLoggedIn();
   return (
     <>
       {/* <LeftBar />
@@ -23,9 +21,9 @@ export const HomePage = () => {
       }
        */}
        <Box sx={{ display: 'flex' }}>
-          <LeftBar></LeftBar>
-          <Typography variant='h1'>Home</Typography>
-          
+          <LeftBar/>
+          {/* <Typography variant='h1'>Home</Typography> */}
+          <Outlet></Outlet>
        </Box>
       
     </>
