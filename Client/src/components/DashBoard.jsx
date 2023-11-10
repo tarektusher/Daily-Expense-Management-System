@@ -1,8 +1,14 @@
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 
 function DashBoard() {
   return (
-    <div>DashBoard</div>
+    <>
+    
+      <Box sx={{marginTop : '12vh'}}>
+            <Typography variant="h4">Dashboard</Typography>
+      </Box>
+    </>
   )
 }
 

@@ -1,8 +1,13 @@
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 
 function AddIncome() {
   return (
-    <div>AddIncome</div>
+    <>
+      <Box sx={{marginTop : '12vh'}}>
+            <Typography variant="h4">Add Income</Typography>
+      </Box>
+    </>
   )
 }
 
