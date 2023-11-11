@@ -6,10 +6,12 @@ import "../../src/Dash.css";
 import LeftBar from '../components/LeftBar'
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import HomeElement from '../components/HomeElement';
 
 export const HomePage = () => {
   // const location = useLocation();
   // const isUserLoggedIn = authServices.isUserLoggedIn();
+  const val = 1;
   return (
     <>
       {/* <LeftBar />
@@ -22,13 +24,16 @@ export const HomePage = () => {
         null
       }
        */}
-       <Navbar></Navbar>
-       <Box sx={{ display: 'flex' }}>
-          <LeftBar/>
-          {/* <Typography variant='h1'>Home</Typography> */}
-          <Outlet></Outlet>
-       </Box>
-       
+      <Navbar/>
+      <LeftBar/>
+      {val == 1 ?
+          <Outlet/>
+      : 
+      <Box sx={{display : 'flex'}}  className = "bgColor">
+          <HomeElement/>
+      </Box>}
+      
+      
       
     </>
   );

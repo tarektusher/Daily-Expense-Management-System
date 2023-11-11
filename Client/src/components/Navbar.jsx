@@ -183,7 +183,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
