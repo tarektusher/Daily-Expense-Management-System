@@ -53,3 +53,19 @@
   background: linear-gradient(158deg, rgb(224, 224, 224)0%, rrgb(233, 237, 254)100%);
 
 }
+
+.paddingall{
+  padding-left: 13vh;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* .priceTitle{
+  font-weight: 600;
+   padding-right: 20vh; 
+} 
+ .priceSubTitle{
+  font-weight: 400;
+  text-align: right; 
+  padding-right: 20vh; 
+}  */
