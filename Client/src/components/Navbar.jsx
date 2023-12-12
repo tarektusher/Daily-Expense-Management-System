@@ -114,6 +114,7 @@ export default function Navbar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem color="inherit" onClick={onLogout}>Logout</MenuItem>
     </Menu>
   );
 
