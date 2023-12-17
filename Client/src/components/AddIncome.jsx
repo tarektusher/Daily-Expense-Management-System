@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import AddIcon from "@mui/icons-material/Add";
-
+import addIncomeServices from '../services/addIncomeServices';
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -20,20 +20,23 @@ const Item = styled(Paper)(({ theme }) => ({
 const AddIncome = () => {
     const form = useForm({
         defaultValues : {
-            fm_id : "",
-            source : "",
+            memberId : "",
+            sourceOfIncome : "",
             amount : 0,
         }
     });
     const { register, control, handleSubmit, formState, getValues, reset } = form;
     const onSubmit = async (data) => {
       const {
-        fm_id,
-        source,
+        memberId,
+        sourceOfIncome,
         amount
       } = data;
-      // await employeeeServices.delteEmployee({emp_id,email});
-      alert(`::: ${fm_id} Income added Successfully :::`);
+      // console.log(memberId);
+      //   console.log(sourceOfIncome);
+      //   console.log(amount);
+       await addIncomeServices.addIncome({memberId, sourceOfIncome, amount});
+      alert(`::: ${memberId} Income added Successfully :::`);
     }
   return (
         <div >
@@ -55,7 +58,7 @@ const AddIncome = () => {
                     <TextField
                           placeholder="Enter Family Member Id"
                           label="Family Memeber Id"
-                          {...register("fm_id")}
+                          {...register("memberId")}
                           variant="outlined"
                           fullWidth
                           required
@@ -64,7 +67,7 @@ const AddIncome = () => {
                     <TextField
                           placeholder="Enter Source of Income"
                           label="Source of Income"
-                          {...register("source")}
+                          {...register("sourceOfIncome")}
                           variant="outlined"
                           fullWidth
                           required
@@ -95,6 +98,7 @@ const AddIncome = () => {
                     <Grid item xs>
                     </Grid>
                 </Grid>
+
             </Box>
             </Box>
         </div>

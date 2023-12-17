@@ -21,5 +21,5 @@ const incomeSchema = new mongoose.Schema({
     }
    )
 
-const Income = mongoose.model('Income',incomeSchema);
-module.exports = Income;
+const addIncome = mongoose.model('addIncome',incomeSchema);
+module.exports = addIncome;

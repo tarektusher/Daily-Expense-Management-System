@@ -1,35 +1,18 @@
 import Axios from '../axios';
 
-const registerEmployee = async ({
-    firstname,
-    lastname,
-    emp_id,
-    age,
-    email,
-    phonenumber,
-    address,
-    department,
-    position,
-    salary ,
-    joiningdate,
-    education,
-    skills,
+const addIncome = async ({
+      memberId,
+      sourceOfIncome,
+      amount
   }) =>{
-    await Axios.post('/employee',{
-        firstname,
-        lastname,
-        emp_id,
-        age,
-        email,
-        phonenumber,
-        address,
-        department,
-        position,
-        salary ,
-        joiningdate,
-        education,
-        skills,
-      });
+    console.log(memberId);
+    console.log(sourceOfIncome);
+    console.log(amount);
+  await Axios.post('/addincome',{
+      memberId,
+      sourceOfIncome,
+      amount
+  });
 }
 
 const delteEmployee = async({emp_id,email})=>{
@@ -74,6 +57,6 @@ const editEmployee = async ({
       skills,
     });
 }
-const employeeeServices = { registerEmployee, delteEmployee, editEmployee};
+const addIncomeServices = { addIncome, delteEmployee, editEmployee};
 
-export default employeeeServices;
+export default addIncomeServices;

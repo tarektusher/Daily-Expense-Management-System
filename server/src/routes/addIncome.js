@@ -14,6 +14,9 @@ addIncomeRoutes.post('/addIncome', async (req,res) =>{
         amount
       } = req.body;
     try {
+        console.log(memberId);
+        console.log(sourceOfIncome);
+        console.log(amount);
         await addIncomeServices.registerIncome({
             memberId,
             sourceOfIncome,
