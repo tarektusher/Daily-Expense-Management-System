@@ -37,7 +37,7 @@ const AddExpense = () => {
         console.log(sourceOfExpense);
         console.log(amount);
        await addExpenseServices.addExpense({memberId, sourceOfExpense, amount});
-      alert(`::: ${memberId} Income added Successfully :::`);
+      alert(`::: ${memberId} Expense added Successfully :::`);
     }
   return (
         <div >

@@ -9,7 +9,8 @@ const registerExpense = async ({
     const expense = new addExpense ({
         memberId,
         sourceOfExpense,
-        amount});
+        amount
+    });
     await expense.save();
 }
 
