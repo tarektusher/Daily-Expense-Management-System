@@ -1,7 +1,7 @@
 import React from 'react'
 import {useForm, useFieldArray} from 'react-hook-form'
 import { DevTool } from "@hookform/devtools"
-// import employeeeServices from '../services/employeeServices';
+import addExpenseServices from '../services/addExpenseServices';
 import "../../src/Dash.css";
 import { Button, Card, Grid, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -21,20 +21,23 @@ const Item = styled(Paper)(({ theme }) => ({
 const AddExpense = () => {
     const form = useForm({
         defaultValues : {
-            fm_id : "",
-            source : "",
+            memberId : "",
+            sourceOfIncome : "",
             amount : 0,
         }
     });
     const { register, control, handleSubmit, formState, getValues, reset } = form;
     const onSubmit = async (data) => {
       const {
-        fm_id,
-        source,
+        memberId,
+        sourceOfExpense,
         amount
       } = data;
-      // await employeeeServices.delteEmployee({emp_id,email});
-      alert(`::: ${fm_id} Income added Successfully :::`);
+      console.log(memberId);
+        console.log(sourceOfExpense);
+        console.log(amount);
+       await addExpenseServices.addExpense({memberId, sourceOfExpense, amount});
+      alert(`::: ${memberId} Income added Successfully :::`);
     }
   return (
         <div >
@@ -56,7 +59,7 @@ const AddExpense = () => {
                     <TextField
                           placeholder="Enter Family Member Id"
                           label="Family Memeber Id"
-                          {...register("fm_id")}
+                          {...register("memberId")}
                           variant="outlined"
                           fullWidth
                           required
@@ -65,7 +68,7 @@ const AddExpense = () => {
                     <TextField
                           placeholder="Enter Source of Income"
                           label="Source of Expense"
-                          {...register("source")}
+                          {...register("sourceOfExpense")}
                           variant="outlined"
                           fullWidth
                           required
