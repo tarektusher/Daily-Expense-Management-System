@@ -6,8 +6,7 @@ const { connectMongoDB } = require('./db');
 
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const courseRoutes = require('./routes/course');
-const employeeRoutes = require('./routes/employee');
+const addIncome = require('./routes/addIncome');
 const PORT = process.env.PORT;
 
 const app = express();
@@ -23,7 +22,7 @@ connectMongoDB();
 
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
-app.use('/api', employeeRoutes)
+app.use('/api', addIncome)
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
