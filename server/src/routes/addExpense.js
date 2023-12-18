@@ -81,8 +81,13 @@ addExpenseRoutes.delete('/addExpense/:id', async(req, res) =>{
 addExpenseRoutes.get('/addExpense', async (req, res) =>{
     try {
         const addExpenses = await AddExpense.find({});
-        if(addExpenses){
-            res.json(addExpenses);
+        if(addExpenses && addExpenses.length > 0){
+            let totalAmount = 0;
+            addExpenses.forEach((expense)=>{
+                totalAmount +=expense.amount;
+                
+            })
+            res.json(totalAmount);
         }
         else{
             res.status(404).json({message : `No User Record`});

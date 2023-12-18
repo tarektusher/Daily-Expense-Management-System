@@ -4,6 +4,7 @@ const addIncomeRoutes = express();
 addIncomeRoutes.use(bodyParser.json());
 const addIncomeServices = require('../services/addIncomeServices');
 const AddIncome = require('../models/AddIncome');
+const addIncome = require('../models/AddIncome');
 
 
 //! API to create a user 
@@ -14,9 +15,6 @@ addIncomeRoutes.post('/addIncome', async (req,res) =>{
         amount
       } = req.body;
     try {
-        console.log(memberId);
-        console.log(sourceOfIncome);
-        console.log(amount);
         await addIncomeServices.registerIncome({
             memberId,
             sourceOfIncome,
@@ -79,9 +77,16 @@ addIncomeRoutes.delete('/addIncome/:id', async(req, res) =>{
 
 addIncomeRoutes.get('/addIncome', async (req, res) =>{
     try {
+
         const addIncomes = await AddIncome.find({});
-        if(addIncomes){
-            res.json(addIncomes);
+        if(addIncomes && addIncomes.length > 0){
+            let totalAmount = 0;
+            addIncomes.forEach((income)=>{
+                totalAmount +=income.amount;
+                
+            })
+            // res.status(404).json(totalAmount);
+            res.json(totalAmount);
         }
         else{
             res.status(404).json({message : `No User Record`});
@@ -94,10 +99,8 @@ addIncomeRoutes.get('/addIncome', async (req, res) =>{
 //! API to get a specific user
 addIncomeRoutes.get('/addIncome/:id', async(req, res) =>{
     try {
-        
-            member_id = req.params.id;
-            email = req.params.email;
-        
+        member_id = req.params.id;
+        email = req.params.email;
         const member_id = await AddIncome.findOne({member_id});
         const member_email = await AddIncome.findOne({email});
 

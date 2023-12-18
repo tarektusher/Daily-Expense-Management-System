@@ -16,7 +16,7 @@ import {
 import "../../src/App.css";
 // import AccordianDash from "./AccordianDash";
 import { useGetAllUsers } from "../hooks/useUser";
-import { useGetAllEmployees } from "../hooks/useEmployee";
+import { useGetAllEmployees, useGetAllIncome } from "../hooks/useIncome";
 // import Barchart from "./BarChart";
 import { useNavigate } from 'react-router-dom';
 
@@ -32,7 +32,40 @@ let Salary = 0;
 let totalEmployee = 0;
 let totalUser = 0;
 export default function DashBoard() {
+  const [totalIncome, setTotalIncome] = React.useState(0);
+  const [totalExpense, setTotalExpense] = React.useState(0);
+  const isFatchData = React.useRef(false);
+  const response = useGetAllIncome();
 
+  const [daysInMonth, setDaysInMonth] = React.useState(null);
+
+  React.useEffect(() => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 1; // Months are zero-based
+    const lastDayOfMonth = new Date(year, month, 0).getDate();
+    setDaysInMonth(lastDayOfMonth);
+  }, []);
+
+  const fetchincome = async () =>{
+    console.log(response);
+    setTotalIncome(response.data?.data);
+    console.log(totalIncome);
+  }
+    React.useEffect(()=>{
+    fetchincome();
+  },[])
+
+  const fetchexpense = async () =>{
+    console.log(response);
+    setTotalIncome(response.data?.data);
+    console.log(totalIncome);
+  }
+    React.useEffect(()=>{
+    fetchexpense();
+  },[])
+  const avgIncome = (totalIncome/daysInMonth) || 0;
+  console.log(avgIncome.toFixed(2));
   return (
     <div className="bgColor">
       <Box sx={{display : 'flex'}}>
@@ -41,7 +74,6 @@ export default function DashBoard() {
         </Typography>
         {/* <Button variant="contained" sx={{ margin: "auto" }} onClick={()=>navigate('/employee')}>Live Employee Look</Button> */}
       </Box>
-      
       <Box sx={{flexGrow: 1, marginLeft: "20vw",  marginRight: "6vh", marginTop : '5vh' }}>
         <Grid container spacing={2}>
           <Grid item xs={8}>
@@ -55,10 +87,10 @@ export default function DashBoard() {
                       component="div"
                       sx={{ color: "#ECEFF1" }}
                     >
-                      Total Amout of Income this month 
+                      Total Amout of Income this month
                     </Typography>
                     <Typography variant="h3" sx={{ color: "#ECEFF1" }}>
-                      {totalUser}
+                      {totalIncome}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -94,7 +126,7 @@ export default function DashBoard() {
                 {/* <div className="iconStyle"><CurrencyExchangeIcon/></div> */}
                 <Stack direction={"col"} sx={{marginLeft : '10px'}}>
                   <div className="paddingall">
-                    <span className="priceTitle">{Salary}Tk</span>
+                    <span className="priceTitle">{avgIncome.toFixed(2)} Tk</span>
                     <br />
                     <span className="priceSubTitle">Average Income Per Day</span>
                   </div>
@@ -107,7 +139,7 @@ export default function DashBoard() {
                 <div className="iconStyle">{/* <CurrencyExchangeIcon/> */}</div>
                 <Stack direction={"col"}>
                   <div className="paddingall">
-                    <span className="priceTitle">{Salary/totalEmployee} Tk</span>
+                    <span className="priceTitle">{avgIncome.toFixed(2)} Tk</span>
                     <br />
                     <span className="priceSubTitle">Average Expense Per Day</span>
                   </div>
