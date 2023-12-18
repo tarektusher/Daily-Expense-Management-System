@@ -62,7 +62,7 @@ addExpenseRoutes.delete('/addExpense/:id', async(req, res) =>{
         const member_email = await AddExpense.findOne({email});
         if(member_id && member_email){
             if(JSON.stringify(member_email) === JSON.stringify(member_id)){
-                await addExpense.findOneAndDelete({emp_id});
+                await AddExpense.findOneAndDelete({emp_id});
                 res.status(200).json({message : 'User Deleted successfully'});
             }
             else{

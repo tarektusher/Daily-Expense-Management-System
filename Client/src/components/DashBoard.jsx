@@ -19,6 +19,7 @@ import { useGetAllUsers } from "../hooks/useUser";
 import { useGetAllEmployees, useGetAllIncome } from "../hooks/useIncome";
 // import Barchart from "./BarChart";
 import { useNavigate } from 'react-router-dom';
+import { useGetAllExpense } from "../hooks/useExpense";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -36,7 +37,7 @@ export default function DashBoard() {
   const [totalExpense, setTotalExpense] = React.useState(0);
   const isFatchData = React.useRef(false);
   const response = useGetAllIncome();
-
+  const responseExpense = useGetAllExpense();
   const [daysInMonth, setDaysInMonth] = React.useState(null);
 
   React.useEffect(() => {
@@ -58,14 +59,14 @@ export default function DashBoard() {
 
   const fetchexpense = async () =>{
     console.log(response);
-    setTotalIncome(response.data?.data);
+    setTotalExpense(responseExpense.data?.data);
     console.log(totalIncome);
   }
     React.useEffect(()=>{
     fetchexpense();
   },[])
   const avgIncome = (totalIncome/daysInMonth) || 0;
-  console.log(avgIncome.toFixed(2));
+  const avgExpense = (totalExpense/daysInMonth) || 0;
   return (
     <div className="bgColor">
       <Box sx={{display : 'flex'}}>
@@ -110,7 +111,7 @@ export default function DashBoard() {
                       Total Amount of Expense This Month
                     </Typography>
                     <Typography variant="h3" sx={{ color: "#ECEFF1" }}>
-                      {totalEmployee}
+                      {totalExpense}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -139,7 +140,7 @@ export default function DashBoard() {
                 <div className="iconStyle">{/* <CurrencyExchangeIcon/> */}</div>
                 <Stack direction={"col"}>
                   <div className="paddingall">
-                    <span className="priceTitle">{avgIncome.toFixed(2)} Tk</span>
+                    <span className="priceTitle">{avgExpense.toFixed(2)} Tk</span>
                     <br />
                     <span className="priceSubTitle">Average Expense Per Day</span>
                   </div>
