@@ -8,16 +8,19 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
+import DetailsTwoToneIcon from '@mui/icons-material/DetailsTwoTone';
+import { useNavigate } from "react-router-dom";
 
-const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
+const options = ["Income Details", "Expense Details"];
 
-export default function SplitButton() {
+export default function DetailButton() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
-
+  const navigate = useNavigate();
   const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
+    // alert(`You clicked ${options[selectedIndex]}`);
+    navigate(`/${options[selectedIndex]}`);
   };
 
   const handleMenuItemClick = (event, index) => {
@@ -39,13 +42,13 @@ export default function SplitButton() {
 
   return (
     <React.Fragment>
-      <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
+      <ButtonGroup variant="contained" sx={{marginTop : '10px'}} ref={anchorRef} aria-label="split button">
         <Button onClick={handleClick}>{options[selectedIndex]}</Button>
         <Button
           size="small"
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
-          aria-label="select merge strategy"
+          
           aria-haspopup="menu"
           onClick={handleToggle}
         >

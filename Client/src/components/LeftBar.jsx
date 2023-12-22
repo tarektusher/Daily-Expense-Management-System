@@ -6,16 +6,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from "react-router-dom";
-import GroupIcon from '@mui/icons-material/Group';
 import { useAppStore } from "../AppStore";
-import SettingsIcon from '@mui/icons-material/Settings';
 import HomeIcon from '@mui/icons-material/Home';
-import AnalyticsIcon from '@mui/icons-material/Analytics';
 import AddIcon from '@mui/icons-material/Add';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-
 
 const drawerWidth = 240;
 
@@ -179,7 +174,7 @@ export default function LeftBar() {
             </ListItemIcon>
             <ListItemText primary="Add Expense" sx={{ opacity: open ? 1 : 0 }} />
           </ListItemButton>
-        </ListItem>
+        </ListItem> 
       </List>
     </Drawer>
   );

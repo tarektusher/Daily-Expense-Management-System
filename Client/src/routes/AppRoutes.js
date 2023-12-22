@@ -5,6 +5,7 @@ import AddIncome from '../components/AddIncome'
 import DashBoard from '../components/DashBoard';
 import AddExpense from '../components/AddExpense';
 import IncomeList from '../components/IncomeList';
+import ExpenseList from '../components/ExpenseList';
 
 
 
@@ -31,8 +32,12 @@ export function AppRoutes() {
           element : <AddExpense />,
         },
         {
-          path : 'incometable',
+          path : 'Income Details',
           element : <IncomeList/>
+        },
+        {
+          path : 'Expense Details',
+          element : <ExpenseList/>
         }
       ],
     },
