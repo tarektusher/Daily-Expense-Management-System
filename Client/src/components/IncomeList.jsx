@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { CircularProgress, Typography } from '@mui/material';
 import IncomeButton from './IncomeButton';
 import useIncome from '../hooks/useIncome';
-
+import EditNoteTwoToneIcon from '@mui/icons-material/EditNoteTwoTone';
 
 const columns = [
   { field: 'id', headerName: 'Member ID', width: 250 },
@@ -24,7 +24,7 @@ const columns = [
 ];
 
 
-export default function UserTable() {
+export default function IncomeList() {
   const [userData, setUserData] = React.useState();
     const {data, isError, isLoading, error} = useIncome.useGetIncomeList();
     React.useEffect(()=>{
@@ -50,24 +50,25 @@ export default function UserTable() {
     return (
       <Box>
       <Typography sx={{marginTop : '100px'}}variant="h4">
-          Employee Information
+          Income Information
       </Typography>
-      <IncomeButton/>
+      <IncomeButton name = {"Income"}/>
       <Box sx = {{width : '100%', marginTop: '20px',display: 'flex', flexWarp : 'warp', justifyContent: 'center', alignItems : 'center' }}>
-          <Box sx={{ height: 'fit-content', width: '80%'}}>
+          <Box sx={{ height: 'fit-content', width: '60%'}}>
           <DataGrid
               rows={rows}
               columns={columns}
               initialState={{
-              pagination: {
-                  paginationModel: {
-                  pageSize: 10,
-                  },
-              },
+                pagination: {
+                    paginationModel: {
+                    pageSize: 10,
+                    },
+                },
               }}
               pageSizeOptions={[5]}
               checkboxSelection
               disableRowSelectionOnClick
+              
           />
           </Box>
       </Box>
