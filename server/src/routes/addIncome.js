@@ -73,7 +73,7 @@ addIncomeRoutes.delete('/addIncome/:id', async(req, res) =>{
         res.status(500).json({ message: error?.message });
     }
 })
-//! API to get all User
+//! API to get total user income 
 
 addIncomeRoutes.get('/addIncome', async (req, res) =>{
     try {
@@ -88,6 +88,21 @@ addIncomeRoutes.get('/addIncome', async (req, res) =>{
             // res.status(404).json(totalAmount);
             res.json(totalAmount);
         }
+        else{
+            res.status(404).json({message : `No User Record`});
+        }
+    } catch (error) {
+        res.status(500).json({ message: error?.message });
+    }
+})
+//! API to get income list 
+
+addIncomeRoutes.get('/incomelist', async (req, res) =>{
+    try {
+
+        const incomeList = await AddIncome.find({});
+        if(incomeList)
+            res.json(incomeList);
         else{
             res.status(404).json({message : `No User Record`});
         }

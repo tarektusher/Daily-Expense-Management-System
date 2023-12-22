@@ -6,19 +6,13 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import {
-  Button,
   Card,
   CardActionArea,
   CardContent,
-  CircularProgress,
   Typography,
 } from "@mui/material";
 import "../../src/App.css";
-// import AccordianDash from "./AccordianDash";
-import { useGetAllUsers } from "../hooks/useUser";
-import { useGetAllEmployees, useGetAllIncome } from "../hooks/useIncome";
-// import Barchart from "./BarChart";
-import { useNavigate } from 'react-router-dom';
+import useIncome from "../hooks/useIncome";
 import { useGetAllExpense } from "../hooks/useExpense";
 
 
@@ -29,14 +23,11 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-let Salary = 0;
-let totalEmployee = 0;
-let totalUser = 0;
 export default function DashBoard() {
   const [totalIncome, setTotalIncome] = React.useState(0);
   const [totalExpense, setTotalExpense] = React.useState(0);
   const isFatchData = React.useRef(false);
-  const response = useGetAllIncome();
+  const response = useIncome.useGetAllIncome();
   const responseExpense = useGetAllExpense();
   const [daysInMonth, setDaysInMonth] = React.useState(null);
 
