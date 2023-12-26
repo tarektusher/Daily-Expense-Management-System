@@ -5,6 +5,7 @@ import { CircularProgress, Typography } from '@mui/material';
 import IncomeButton from './IncomeButton';
 import useIncome from '../hooks/useIncome';
 import EditNoteTwoToneIcon from '@mui/icons-material/EditNoteTwoTone';
+import { useGetAllExpense } from '../hooks/useExpense';
 
 const columns = [
   { field: 'id', headerName: 'Member ID', width: 250 },
@@ -26,10 +27,9 @@ const columns = [
 
 export default function ExpenseList() {
   const [userData, setUserData] = React.useState();
-    const {data, isError, isLoading, error} = useIncome.useGetIncomeList();
+    const {data, isError, isLoading, error} = useGetAllExpense();
     React.useEffect(()=>{
          setUserData(data?.data);
-         
     })
     if(isLoading){
         return <CircularProgress/>
@@ -37,7 +37,7 @@ export default function ExpenseList() {
 
     let rows =[];
     if(userData){
-        userData.map((user)=>{
+        userData.forEach((user)=>{
             const tempData = {
                 'id' : user.memberId,
                 'sourceOfIncome' : user.sourceOfIncome,

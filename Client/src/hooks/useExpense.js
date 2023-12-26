@@ -5,7 +5,7 @@ export const useGetAllExpense=()=>{
     return useQuery('useGetAllExpense',()=>
         Axios({
             method: 'GET',
-            url : '/addExpense',
+            url : '/addexpense',
         })
     )
 }
