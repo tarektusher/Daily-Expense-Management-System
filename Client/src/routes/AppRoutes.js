@@ -38,7 +38,15 @@ export function AppRoutes() {
         {
           path : 'Expense Details',
           element : <ExpenseList/>
-        }
+        },
+        {
+          path : 'Income Details/addincome',
+          element : <AddIncome/>
+        },
+        {
+          path : 'Expense Details/addexpense',
+          element : <AddExpense/>
+        },
       ],
     },
   ]);

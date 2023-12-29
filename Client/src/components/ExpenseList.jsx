@@ -6,11 +6,17 @@ import IncomeButton from './IncomeButton';
 import useExpense from '../hooks/useExpense';
 
 const columns = [
-  { field: 'id', headerName: 'Member ID', width: 250 },
+  {
+    field: 'id',
+    headerName: 'Date',
+    width: 120,
+    editable: true,
+  },
+  { field: 'memberId', headerName: 'Member ID', width: 150 },
   {
     field: 'sourceOfExpense',
     headerName: 'Source Of Expense',
-    width: 350,
+    width: 250,
     editable: true,
   },
   {
@@ -38,7 +44,8 @@ export default function ExpenseList() {
     if(userData){
         userData.forEach((user)=>{
             const tempData = {
-                'id' : user.memberId,
+                'id' : user.createdAt,
+                'memberId' : user.memberId,
                 'sourceOfExpense' : user.sourceOfExpense,
                 'amount' : user.amount,
             }

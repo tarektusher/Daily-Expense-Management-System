@@ -4,7 +4,6 @@ const incomeSchema = new mongoose.Schema({
     memberId : {
         type : String,
         required : true,
-        unique  : true,
     },
     sourceOfIncome : {
         type : String,
@@ -14,7 +13,6 @@ const incomeSchema = new mongoose.Schema({
         type : Number,
         required : true,
     },
-    
 },
     {
         timestamps : true

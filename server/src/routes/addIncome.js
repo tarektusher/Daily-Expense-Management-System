@@ -4,11 +4,9 @@ const addIncomeRoutes = express();
 addIncomeRoutes.use(bodyParser.json());
 const addIncomeServices = require('../services/addIncomeServices');
 const AddIncome = require('../models/AddIncome');
-const addIncome = require('../models/AddIncome');
-
 
 //! API to create a user 
-addIncomeRoutes.post('/addIncome', async (req,res) =>{
+addIncomeRoutes.post('/addincome', async (req,res) =>{
     const {
         memberId,
         sourceOfIncome,
@@ -24,6 +22,7 @@ addIncomeRoutes.post('/addIncome', async (req,res) =>{
     } catch (error) {
         res.status(500).json({ message: error?.message });
     }
+
 })
 
 //! API to update a user

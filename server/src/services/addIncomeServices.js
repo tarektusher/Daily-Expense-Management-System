@@ -12,7 +12,6 @@ const registerIncome = async ({
         amount});
     await income.save();
 }
-
 module.exports = {
     registerIncome,
 }

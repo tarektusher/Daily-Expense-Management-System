@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
-
 const expenseSchema = new mongoose.Schema({
     memberId : {
         type : String,
         required : true,
-        unique  : true,
     },
     sourceOfExpense : {
         type : String,
