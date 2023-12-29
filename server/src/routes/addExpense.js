@@ -114,7 +114,7 @@ addExpenseRoutes.delete('/addExpense/:id', async(req, res) =>{
 })
 //! API to get all User
 
-addExpenseRoutes.get('/addexpense', async (req, res) =>{
+addExpenseRoutes.get('/Expenselist', async (req, res) =>{
     try {
         const addExpenses = await AddExpense.find({});
         if(addExpenses){

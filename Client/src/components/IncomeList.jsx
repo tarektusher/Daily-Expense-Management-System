@@ -10,7 +10,7 @@ const columns = [
   { field: 'id', headerName: 'Member ID', width: 250 },
   {
     field: 'sourceOfIncome',
-    headerName: 'source Of Income',
+    headerName: 'Source Of Income',
     width: 350,
     editable: true,
   },

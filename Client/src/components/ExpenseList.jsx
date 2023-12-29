@@ -3,15 +3,13 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { CircularProgress, Typography } from '@mui/material';
 import IncomeButton from './IncomeButton';
-import useIncome from '../hooks/useIncome';
-import EditNoteTwoToneIcon from '@mui/icons-material/EditNoteTwoTone';
 import useExpense from '../hooks/useExpense';
 
 const columns = [
   { field: 'id', headerName: 'Member ID', width: 250 },
   {
-    field: 'sourceOfIncome',
-    headerName: 'source Of Income',
+    field: 'sourceOfExpense',
+    headerName: 'Source Of Expense',
     width: 350,
     editable: true,
   },
@@ -27,7 +25,7 @@ const columns = [
 
 export default function ExpenseList() {
   const [userData, setUserData] = React.useState();
-    const {data, isError, isLoading, error} = useExpense.useGetAllExpense();
+    const {data, isError, isLoading, error} = useExpense.useGetExpenseList();
     React.useEffect(()=>{
          setUserData(data?.data);
          // eslint-disable-next-line
@@ -41,7 +39,7 @@ export default function ExpenseList() {
         userData.forEach((user)=>{
             const tempData = {
                 'id' : user.memberId,
-                'sourceOfIncome' : user.sourceOfIncome,
+                'sourceOfExpense' : user.sourceOfExpense,
                 'amount' : user.amount,
             }
             rows.push(tempData);
