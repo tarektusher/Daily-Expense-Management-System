@@ -28,7 +28,19 @@ addExpenseRoutes.post('/addexpense', async (req,res) =>{
         res.status(500).json({ message: error?.message });
     }
 })
-
+//! API to get Latest Expense
+addExpenseRoutes.get('/latestExpenseData', async (req, res) => {
+    try {
+      // Assuming 'timestamp' is the field representing the insertion time
+      const latestData = await AddExpense.findOne().sort({ timestamp: -1 }).limit(1);
+      console.log(latestData)
+      res.json(latestData);
+    } catch (error) {
+      console.error('Error fetching latest data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
 //! API to get total user income 
 
 addExpenseRoutes.get('/addexpense', async (req, res) =>{
@@ -104,7 +116,6 @@ addExpenseRoutes.get('/addexpense', async (req, res) =>{
     try {
         const addExpenses = await AddExpense.find({});
         if(addExpenses){
-            
             res.json(addExpenses);
         }
         else{

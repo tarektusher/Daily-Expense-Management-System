@@ -13,7 +13,8 @@ import {
 } from "@mui/material";
 import "../../src/App.css";
 import useIncome from "../hooks/useIncome";
-import { useGetAllExpense } from "../hooks/useExpense";
+import useExpense from "../hooks/useExpense";
+import BasicAccordion from "./AccordianDash";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,7 +29,7 @@ export default function DashBoard() {
   const [totalExpense, setTotalExpense] = React.useState(0);
   const isFatchData = React.useRef(false);
   const response = useIncome.useGetAllIncome();
-  const responseExpense = useGetAllExpense();
+  const responseExpense = useExpense.useGetAllExpense();
   const [daysInMonth, setDaysInMonth] = React.useState(null);
 
   React.useEffect(() => {
@@ -49,7 +50,7 @@ export default function DashBoard() {
   },[])
 
   const fetchexpense = async () =>{
-    console.log(response);
+    console.log(responseExpense);
     setTotalExpense(responseExpense.data?.data || 0);
     console.log(totalIncome);
   }
@@ -155,7 +156,8 @@ export default function DashBoard() {
             <Card sx={{ height: 65 + "vh" }}>
               <CardActionArea>
                 <CardContent>
-                  {/* <AccordianDash /> */}
+                  <Typography variant="h4" sx={{marginBottom : '50px'}}>Latest Action</Typography>
+                  <BasicAccordion />
                 </CardContent>
               </CardActionArea>
             </Card>

@@ -1,7 +1,7 @@
 import Axios from "../axios";
 import { useQuery } from "react-query";
 
-export const useGetAllExpense=()=>{
+ const useGetAllExpense = () =>{
     return useQuery('useGetAllExpense',()=>
         Axios({
             method: 'GET',
@@ -10,3 +10,23 @@ export const useGetAllExpense=()=>{
     )
 }
 
+const useGetExpenseList = ()=>{
+    return useQuery ('useGetExpenseList', ()=>
+        Axios({
+            method : 'GET',
+            url : '/Expenselist'
+        })
+    )
+}
+
+const useGetLatestExpense = () =>{
+    return useQuery ('useGetLatestExpense',()=>
+        Axios({
+            method : 'GET',
+            url : '/latestExpenseData'
+        })
+    )
+}
+
+const useExpense = {useGetAllExpense, useGetExpenseList, useGetLatestExpense}
+export default useExpense;

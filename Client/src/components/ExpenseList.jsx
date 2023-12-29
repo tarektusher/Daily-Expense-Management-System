@@ -5,7 +5,7 @@ import { CircularProgress, Typography } from '@mui/material';
 import IncomeButton from './IncomeButton';
 import useIncome from '../hooks/useIncome';
 import EditNoteTwoToneIcon from '@mui/icons-material/EditNoteTwoTone';
-import { useGetAllExpense } from '../hooks/useExpense';
+import useExpense from '../hooks/useExpense';
 
 const columns = [
   { field: 'id', headerName: 'Member ID', width: 250 },
@@ -27,7 +27,7 @@ const columns = [
 
 export default function ExpenseList() {
   const [userData, setUserData] = React.useState();
-    const {data, isError, isLoading, error} = useGetAllExpense();
+    const {data, isError, isLoading, error} = useExpense.useGetAllExpense();
     React.useEffect(()=>{
          setUserData(data?.data);
          // eslint-disable-next-line
