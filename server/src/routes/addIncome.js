@@ -95,6 +95,20 @@ addIncomeRoutes.get('/addIncome', async (req, res) =>{
         res.status(500).json({ message: error?.message });
     }
 })
+
+//! API to get Latest Income
+addIncomeRoutes.get('/latestIncomeData', async (req, res) => {
+    try {
+        console.log("Tarek");
+      // Assuming 'timestamp' is the field representing the insertion time
+      const latestData = await AddIncome.findOne().sort({ timestamp: -1 }).limit(1);
+      console.log(latestData)
+      res.json(latestData);
+    } catch (error) {
+      console.error('Error fetching latest data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 //! API to get income list 
 
 addIncomeRoutes.get('/incomelist', async (req, res) =>{

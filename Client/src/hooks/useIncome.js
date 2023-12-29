@@ -19,5 +19,13 @@ const useGetIncomeList = ()=>{
     )
 }
 
-const useIncome = {useGetAllIncome, useGetIncomeList}
+const useGetLatestIncome = () =>{
+    return useQuery ('useGetLatestIncome',()=>
+        Axios({
+            method : 'GET',
+            url : '/latestIncomeData'
+        })
+    )
+}
+const useIncome = {useGetAllIncome, useGetIncomeList, useGetLatestIncome}
 export default useIncome;

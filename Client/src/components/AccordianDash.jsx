@@ -15,12 +15,11 @@ let IncomeAmount = 0;
 let sourceofincome= "bazar"
 export default   function  BasicAccordion() {
     const [latestExpense, setLatestExpense] = React.useState(null);
+    const [latestIncome, setLatestIncome] = React.useState(null);
     const responseExpense = useExpense.useGetLatestExpense();
-    // const responseIncome = useIncome.useGetLatestExpense();
+    const responseIncome = useIncome.useGetLatestIncome();
     const fetchLatestExpense = async () =>{
-      console.log(responseExpense);
       await setLatestExpense(responseExpense?.data?.data);
-      console.log(latestExpense)
       if(latestExpense){
         ExpenseMemberId = latestExpense.memberId;
         ExpenseAmount = latestExpense.amount;
@@ -30,14 +29,15 @@ export default   function  BasicAccordion() {
     React.useEffect(()=>{
       fetchLatestExpense();
     })
+
     const fetchLatestIncome = async () =>{
-      console.log(responseExpense);
-      await setLatestExpense(responseExpense?.data?.data);
-      console.log(latestExpense)
-      if(latestExpense){
-        ExpenseMemberId = latestExpense.memberId;
-        ExpenseAmount = latestExpense.amount;
-        sourceofexpense = latestExpense.sourceOfExpense;
+      // console.log(responseIncome);
+      await setLatestIncome(responseIncome?.data?.data);
+      // console.log(latestIncome)
+      if(latestIncome){
+        IncomeMemberId = latestIncome.memberId;
+        IncomeAmount = latestIncome.amount;
+        sourceofincome = latestIncome.sourceOfIncome;
       }
     }
     React.useEffect(()=>{
