@@ -100,8 +100,7 @@ addIncomeRoutes.get('/latestIncomeData', async (req, res) => {
     try {
         console.log("Tarek");
       // Assuming 'timestamp' is the field representing the insertion time
-      const latestData = await AddIncome.findOne().sort({ timestamp: -1 }).limit(1);
-      console.log(latestData)
+      const latestData = await AddIncome.findOne().sort({ createdAt: -1 }).limit(1);
       res.json(latestData);
     } catch (error) {
       console.error('Error fetching latest data:', error);
