@@ -29,6 +29,28 @@ addExpenseRoutes.post('/addexpense', async (req,res) =>{
     }
 })
 
+//! API to get total user income 
+
+addExpenseRoutes.get('/addexpense', async (req, res) =>{
+    try {
+
+        const addExpense = await AddExpense.find({});
+        if(addExpense && addExpense.length > 0){
+            let totalAmount = 0;
+            addExpense.forEach((expense)=>{
+                totalAmount +=expense.amount;
+                
+            })
+            res.json(totalAmount);
+        }
+        else{
+            res.status(404).json({message : `No User Record`});
+        }
+    } catch (error) {
+        res.status(500).json({ message: error?.message });
+    }
+})
+
 //! API to update a user
 addExpenseRoutes.put('/addExpense/:id', async (req,res) =>{
     try {

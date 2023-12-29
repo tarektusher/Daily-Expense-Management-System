@@ -30,6 +30,7 @@ export default function ExpenseList() {
     const {data, isError, isLoading, error} = useGetAllExpense();
     React.useEffect(()=>{
          setUserData(data?.data);
+         // eslint-disable-next-line
     })
     if(isLoading){
         return <CircularProgress/>

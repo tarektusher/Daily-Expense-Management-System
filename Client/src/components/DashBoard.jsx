@@ -41,7 +41,7 @@ export default function DashBoard() {
 
   const fetchincome = async () =>{
     console.log(response);
-    setTotalIncome(response.data?.data);
+    setTotalIncome(response.data?.data || 0);
     console.log(totalIncome);
   }
     React.useEffect(()=>{
@@ -50,7 +50,7 @@ export default function DashBoard() {
 
   const fetchexpense = async () =>{
     console.log(response);
-    setTotalExpense(responseExpense.data?.data);
+    setTotalExpense(responseExpense.data?.data || 0);
     console.log(totalIncome);
   }
     React.useEffect(()=>{
