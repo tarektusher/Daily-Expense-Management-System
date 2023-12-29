@@ -27,6 +27,5 @@ const useGetLatestExpense = () =>{
         })
     )
 }
-
 const useExpense = {useGetAllExpense, useGetExpenseList, useGetLatestExpense}
 export default useExpense;

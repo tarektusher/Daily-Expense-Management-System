@@ -31,6 +31,7 @@ addExpenseRoutes.post('/addexpense', async (req,res) =>{
 //! API to get Latest Expense
 addExpenseRoutes.get('/latestExpenseData', async (req, res) => {
     try {
+        console.log("Tarek");
       // Assuming 'timestamp' is the field representing the insertion time
       const latestData = await AddExpense.findOne().sort({ timestamp: -1 }).limit(1);
       console.log(latestData)
@@ -62,6 +63,7 @@ addExpenseRoutes.get('/addexpense', async (req, res) =>{
         res.status(500).json({ message: error?.message });
     }
 })
+
 
 //! API to update a user
 addExpenseRoutes.put('/addExpense/:id', async (req,res) =>{
