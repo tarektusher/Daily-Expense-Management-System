@@ -9,13 +9,14 @@ import {
   Card,
   CardActionArea,
   CardContent,
+  CardMedia,
   Typography,
 } from "@mui/material";
 import "../../src/App.css";
 import useIncome from "../hooks/useIncome";
 import useExpense from "../hooks/useExpense";
 import BasicAccordion from "./AccordianDash";
-
+import image from "../assets/pic-removebg-preview.png"
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -31,7 +32,6 @@ export default function DashBoard() {
   const response = useIncome.useGetAllIncome();
   const responseExpense = useExpense.useGetAllExpense();
   const [daysInMonth, setDaysInMonth] = React.useState(null);
-
   React.useEffect(() => {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -60,7 +60,7 @@ export default function DashBoard() {
   const avgIncome = (totalIncome/daysInMonth) || 0;
   const avgExpense = (totalExpense/daysInMonth) || 0;
   return (
-    <div className="bgColor">
+    <div >
       <Box sx={{display : 'flex'}}>
         <Typography variant = "h3" sx={{margin : '5px', marginLeft : '30vw'}}>
         <span className="Emp">Employee</span> Dashboard
@@ -145,11 +145,11 @@ export default function DashBoard() {
         <Grid container spacing={2}>
           <Grid item xs={8}>
             <Card sx={{ height: 65 + "vh" }}>
-              <CardActionArea>
-                <CardContent>
-                    {/* <Barchart/> */}
-                </CardContent>
-              </CardActionArea>
+            <CardMedia
+                  sx={{ height: '500px', width : 'full'}}
+                  image={image}
+                  title="Daily pic"
+                />
             </Card>
           </Grid>
           <Grid item xs={4}>
